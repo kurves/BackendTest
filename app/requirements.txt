@@ -1,0 +1,7 @@
+#dependencies
+fastapi
+uvicorn
+passlib[bcrypt]
+pydantic
+SQLAlchemy
+cachetools
