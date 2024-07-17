@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
+from typing import List
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -8,6 +9,9 @@ class UserCreate(BaseModel):
 class User(BaseModel):
     id: int
     email: EmailStr
+
+     class Config:
+        orm_mode = True
 
 
 class PostCreate(BaseModel):
