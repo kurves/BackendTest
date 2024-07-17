@@ -7,6 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #Database detailes
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
 DATABASE_URL = "postgresql://user:password@host:port/database"
 
 engine = create_engine(DATABASE_URL)
