@@ -2,6 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 #Database detailes
 DATABASE_URL = "postgresql://user:password@host:port/database"
 

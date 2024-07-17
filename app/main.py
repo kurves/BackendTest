@@ -44,5 +44,5 @@ async def signup(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db.add(user_obj)
     db.commit()
     db.refresh(user_
-Use code with caution.
+
 
