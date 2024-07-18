@@ -14,14 +14,7 @@ class User(BaseModel):
         orm_mode = True
 
 
-class PostCreate(BaseModel):
-    text: str = Field(max_length=1024 * 1024)  # Limit to 1 MB
 
-
-class Post(BaseModel):
-    id: int
-    text: str
-    owner_id: int~
 
 
 from pydantic import BaseModel, EmailStr, constr
