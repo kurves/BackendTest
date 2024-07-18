@@ -1,12 +1,3 @@
-from pydantic import BaseModel, EmailStr, Field
-from typing import List
-
-
-
-
-
-
-
 from pydantic import BaseModel, EmailStr, constr
 from typing import List
 
