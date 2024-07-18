@@ -9,14 +9,6 @@ from datetime import datetime, timedelta
 from . import models, schemas, database
 
 
-
-
-from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
-from passlib.context import CryptContext
-from typing import Optional
-
 # Replace with your secret key and algorithm
 SECRET_KEY = "your_very_secret_key"
 ALGORITHM = "HS256"
