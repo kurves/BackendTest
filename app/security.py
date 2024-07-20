@@ -9,7 +9,11 @@ from datetime import datetime, timedelta
 from . import models, schemas, database
 
 
-# Replace with your secret key and algorithm
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+
 SECRET_KEY = "your_very_secret_key"
 ALGORITHM = "HS256"
 
