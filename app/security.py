@@ -51,12 +51,7 @@ def authenticate_user(db: Session, email: str, password: str):
         return False
     return user
 
-async def get_current_user(token: str = Depends(oauth2_scheme)):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+
 
     if not token:
         raise credentials_exception
