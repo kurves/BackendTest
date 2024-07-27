@@ -53,13 +53,4 @@ def authenticate_user(db: Session, email: str, password: str):
 
 
 
-    if not token:
-        raise credentials_exception
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        user_id: Optional[int] = payload.get("user_id")
-        if user_id is None:
-            raise credentials_exception
-        return user_id
-    except JWTError:
-        raise credentials_exception
+  
