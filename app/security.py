@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 import os
 from datetime import datetime, timedelta
 from . import models, schemas, database
+from typing import Optional
 
 
 
@@ -39,10 +40,16 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 
 
     
-def create_access_token(data: dict):
-    to_encode = data.copy()
-    encoded_token = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_token
+def get_user(db: Session, email: str):
+    return db.query(models.User).filter(models.User.email == email).first()
+
+def authenticate_user(db: Session, email: str, password: str):
+    user = get_user(db, email)
+    if not user:
+        return False
+    if not verify_password(password, user.hashed_password):
+        return False
+    return user
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
