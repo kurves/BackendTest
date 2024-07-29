@@ -21,3 +21,13 @@ def get_posts(db: Session = Depends(database.get_db), current_user: models.User 
     posts = db.query(models.Post).filter(models.Post.owner_id == current_user.id).all()
     cache[current_user.email] = posts
     return posts
+
+
+@router.delete("/posts/{post_id}", response_model=schemas.Post)
+def delete_post(post_id: int, db: Session = Depends(database.get_db), current_user: models.User = Depends(security.get_current_user)):
+    post = db.query(models.Post).filter(models.Post.id == post_id, models.Post.owner_id == current_user.id).first()
+    if post is None:
+        raise HTTPException(status_code=404, detail="Post not found")
+    db.delete(post)
+    db.commit()
+    return post
