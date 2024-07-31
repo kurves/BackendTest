@@ -18,6 +18,12 @@ SECRET_KEY = "your_secret_key"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+
+app = FastAPI()
+
+app.include_router(auth.router, prefix="/auth")
+app.include_router(posts.router, prefix="/posts")
+
 app = FastAPI()
 
 # Dependency for getting the database session
