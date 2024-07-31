@@ -43,14 +43,6 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     return User(id=1, email="user@example.com")  # Replace with actual user lookup
 
 
-# User signup endpoint
-@app.post("/signup", response_model=schemas.User)
-async def signup(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    # Hash the password before storing
-    hashed_password = pwd_context.hash(user.password)
-    user_obj = models.User(email=user.email, hashed_password=hashed_password)
-    db.add(user_obj)
-    db.commit()
-    db.refresh(user_
+
 
 
