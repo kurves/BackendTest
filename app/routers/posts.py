@@ -19,7 +19,7 @@ def get_posts(db: Session = Depends(database.get_db), current_user: models.User 
     if current_user.email in cache:
         return cache[current_user.email]
     posts = db.query(models.Post).filter(models.Post.owner_id == current_user.id).all()
-    cache[current_user.email] = posts
+    cache[current_use~~r.email] = posts
     return posts
 
 

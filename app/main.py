@@ -4,6 +4,13 @@ from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
 from typing import List
 
+
+from fastapi import FastAPI
+from .database import engine, Base
+from .routers import auth, posts
+
+Base.metadata.create_all(bind=engine)
+
 from app import database, models, schemas
 
 # Replace with a secure secret key
