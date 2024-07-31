@@ -13,11 +13,6 @@ Base.metadata.create_all(bind=engine)
 
 from app import database, models, schemas
 
-# Replace with a secure secret key
-SECRET_KEY = "your_secret_key"
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 
 app = FastAPI()
 
